@@ -14,6 +14,7 @@ namespace Chess
         public const string BISHOP = "bishop";
         public const string QUEEN = "queen";
         public const string KING = "king";
+        public static readonly string[] LETTERS = {"*","A", "B", "C", "D", "E", "F", "G", "H"};
 
         public static bool white(int x, int y)
         {
@@ -41,14 +42,12 @@ namespace Chess
         public Player[] players;
         public MovePair[] moveHistory;
 
-        public Game()
+        public Game(Player[] players)
         {
             this.check = false;
             this.checkmate = false;
-
-            //gameBoard = new Board(Piece[] whitePieces, Piece[] blackPieces);
+            this.players = players;
             moveHistory = new MovePair[300];
-
         }
     }
 
@@ -64,8 +63,8 @@ namespace Chess
                 for (int j = 9; j < 0; j--)
                 {
 
-                }
-            }
+                };
+            };
         }
     }
 
@@ -90,8 +89,11 @@ namespace Chess
         {
             this.x = x;
             this.y = y;
-            this.white = Utility.white(x, y);
-            this.homeSpace = Utility.homeSpace(x);
+            if (x != 0 || y != 0)
+            {
+                this.white = Utility.white(x, y);
+                this.homeSpace = Utility.homeSpace(x);
+            };
         }
     }
 
